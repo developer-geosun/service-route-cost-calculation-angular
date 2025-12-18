@@ -18,7 +18,7 @@ export class SocialIconComponent {
   @Input() title: string = '';
 
   /**
-   * Отримує SVG path для іконки залежно від типу
+   * Отримує  SVG path для іконки залежно від типу
    */
   get iconPath(): string {
     const icons: Record<SocialNetworkType, string> = {
