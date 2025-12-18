@@ -17,31 +17,68 @@ export class ConfigService {
   readonly environment = environment;
 
   /**
-   * Отримує URL для Telegram
+   * Отримує URL для Telegram (для toolbar)
    */
   get telegramUrl(): string {
-    return `https://t.me/${this.config.phoneNumber}`;
+    const phoneDigits = this.config.phoneNumber.replace(/[^0-9]/g, '');
+    return `https://t.me/+${phoneDigits}`;
   }
 
   /**
-   * Отримує URL для WhatsApp
+   * Отримує URL для WhatsApp (для toolbar)
    */
   get whatsAppUrl(): string {
     return `https://wa.me/${this.config.phoneNumberForWhatsApp}`;
   }
 
   /**
-   * Отримує URL для Viber
+   * Отримує URL для Viber (для toolbar)
    */
   get viberUrl(): string {
     return `viber://chat?number=${encodeURIComponent(this.config.phoneNumber)}`;
   }
 
   /**
-   * Отримує URL для Facebook
+   * Отримує URL для Telegram розробника (для footer)
+   */
+  get developerTelegramUrl(): string {
+    const phoneDigits = this.config.developerPhoneNumber.replace(/[^0-9]/g, '');
+    return `https://t.me/+${phoneDigits}`;
+  }
+
+  /**
+   * Отримує URL для WhatsApp розробника (для footer)
+   */
+  get developerWhatsAppUrl(): string {
+    return `https://wa.me/${this.config.developerPhoneNumberForWhatsApp}`;
+  }
+
+  /**
+   * Отримує URL для Viber розробника (для footer)
+   */
+  get developerViberUrl(): string {
+    return `viber://chat?number=${encodeURIComponent(this.config.developerPhoneNumber)}`;
+  }
+
+  /**
+   * Отримує URL для Facebook (для toolbar)
    */
   get facebookUrl(): string {
     return this.config.facebookUrl;
+  }
+
+  /**
+   * Отримує URL для Facebook розробника (для footer)
+   */
+  get developerFacebookUrl(): string {
+    return this.config.developerFacebookUrl;
+  }
+
+  /**
+   * Отримує URL для LinkedIn розробника (для footer)
+   */
+  get developerLinkedInUrl(): string {
+    return this.config.linkedinUrl;
   }
 
   /**

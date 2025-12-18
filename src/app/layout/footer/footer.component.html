@@ -1,14 +1,15 @@
 <footer class="app-footer">
   <div class="footer-content">
     <div class="footer-section">
-      <p>&copy; {{ currentYear }} GeoSun. {{ 'common.allRightsReserved' | translate }}</p>
+      <p>&copy; {{ currentYear }} {{ 'common.geosun' | translate }}. {{ 'common.allRightsReserved' | translate }}</p>
     </div>
-    <div class="footer-section">
-      <p>&copy; {{ currentYear }} GeoSun. {{ 'common.allRightsReserved' | translate }}</p>
-      <app-social-icon type="telegram" [url]="configService.telegramUrl"></app-social-icon>
-      <app-social-icon type="whatsapp" [url]="configService.whatsAppUrl"></app-social-icon>
-      <app-social-icon type="viber" [url]="configService.viberUrl"></app-social-icon>
-      <app-social-icon type="facebook" [url]="configService.facebookUrl"></app-social-icon>
+    <div class="footer-section">      
+      <p>&copy; {{ 'common.designedBy' | translate }}</p>
+      <app-social-icon type="telegram" [url]="configService.developerTelegramUrl"></app-social-icon>
+      <app-social-icon type="whatsapp" [url]="configService.developerWhatsAppUrl"></app-social-icon>
+      <app-social-icon type="viber" [url]="configService.developerViberUrl"></app-social-icon>
+      <app-social-icon type="facebook" [url]="configService.developerFacebookUrl"></app-social-icon>
+      <app-social-icon type="linkedin" [url]="configService.developerLinkedInUrl"></app-social-icon>
     </div>
   </div>
 </footer>

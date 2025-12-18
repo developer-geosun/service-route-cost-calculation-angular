@@ -1,7 +1,9 @@
 {
   "common": {
+    "geosun": "GeoSun LLC",
     "allRightsReserved": "All rights reserved",
-    "returnToHome": "Return to home"
+    "returnToHome": "Return to home",
+    "designedBy": "Designed by Horielikov Maksym (Fermats)"
   },
   "pages": {
     "main": {

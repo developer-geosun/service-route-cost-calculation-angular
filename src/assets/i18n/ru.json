@@ -1,7 +1,9 @@
 {
   "common": {
+    "geosun": "ООО  Геосан",
     "allRightsReserved": "Все права защищены",
-    "returnToHome": "Вернуться на главную"
+    "returnToHome": "Вернуться на главную",
+    "designedBy": "Разработано Максимом Гореликовым (Ферматс)"
   },
   "pages": {
     "main": {
