@@ -1,9 +1,8 @@
 .app-footer {
   background-color: var(--mat-toolbar-container-background-color, #3f51b5);
   color: var(--mat-toolbar-container-text-color, #fff);
-  height: 80px;
   min-height: 80px;
-  padding: 0 20px;
+  padding: 16px 12px;
   margin-top: auto;
   display: flex;
   align-items: center;
@@ -14,19 +13,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     width: 100%;
     max-width: 1200px;
 
     .footer-section {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: 8px;
 
       p {
         margin: 0;
-        font-size: 14px;
+        font-size: 12px;
+        text-align: center;
+        width: 100%;
+        flex-basis: 100%;
       }
 
       app-social-icon {
@@ -36,6 +39,31 @@
   }
 }
 
+// Планшеты и больше (от 600px)
+@media (min-width: 600px) {
+  .app-footer {
+    padding: 16px 20px;
+    min-height: 80px;
+
+    .footer-content {
+      gap: 15px;
+
+      .footer-section {
+        gap: 5px;
+        flex-wrap: nowrap;
+
+        p {
+          font-size: 14px;
+          width: auto;
+          flex-basis: auto;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+// Десктоп (от 768px)
 @media (min-width: 768px) {
   .app-footer {
     .footer-content {
