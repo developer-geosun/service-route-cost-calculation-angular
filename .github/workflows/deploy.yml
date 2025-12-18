@@ -41,24 +41,40 @@ jobs:
         env:
           DEPLOY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -e
+          
+          # Проверяем, что папка dist существует перед переключением веток
+          if [ ! -d "dist/services-route-calculation-angular-temp" ]; then
+            echo "Error: dist/services-route-calculation-angular-temp directory not found"
+            exit 1
+          fi
+          
+          # Сохраняем собранные файлы во временную директорию перед переключением веток
+          mkdir -p /tmp/build-output
+          cp -r dist/services-route-calculation-angular-temp/* /tmp/build-output/
+          
           # Настраиваем remote для push в тот же репозиторий
           git remote set-url origin https://${DEPLOY_TOKEN}@github.com/${{ github.repository }}.git
           
-          # Создаем или переключаемся на ветку gh-pages
+          # Проверяем, существует ли ветка gh-pages
           git fetch origin gh-pages 2>/dev/null || true
           
           if git show-ref --verify --quiet refs/remotes/origin/gh-pages 2>/dev/null; then
-            git checkout gh-pages
-            git pull origin gh-pages 2>/dev/null || true
+            # Ветка существует, переключаемся на неё
+            git checkout -b gh-pages origin/gh-pages 2>/dev/null || git checkout gh-pages
+            git pull origin gh-pages || true
           else
+            # Ветка не существует, создаем новую orphan ветку
             git checkout --orphan gh-pages
+            # Удаляем все файлы из индекса
+            git rm -rf . --quiet || true
           fi
           
-          # Удаляем все файлы кроме .git
+          # Удаляем все файлы кроме .git из рабочей директории
           find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} + 2>/dev/null || true
           
-          # Копируем собранные файлы
-          cp -r dist/services-route-calculation-angular-temp/* .
+          # Копируем собранные файлы из временной директории
+          cp -r /tmp/build-output/* .
           
           # Создаем .nojekyll для правильной работы GitHub Pages с Angular
           touch .nojekyll
@@ -69,7 +85,7 @@ jobs:
           # Коммитим изменения
           if ! git diff --staged --quiet; then
             git commit -m "Deploy: $(date +'%Y-%m-%d %H:%M:%S') [skip ci]"
-            git push -u origin gh-pages || git push origin gh-pages
+            git push -u origin gh-pages
           else
             echo "No changes to commit"
           fi
