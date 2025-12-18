@@ -1,0 +1,33 @@
+{
+  "common": {
+    "allRightsReserved": "All rights reserved",
+    "returnToHome": "Return to home"
+  },
+  "pages": {
+    "main": {
+      "title": "Main page",
+      "welcome": "Welcome to the main page!"
+    },
+    "notFound": {
+      "title": "404",
+      "message": "Page not found"
+    },
+    "stopService": {
+      "title": "Service stopped",
+      "message": "Service stop page"
+    }
+  },
+  "theme": {
+    "switchToDark": "Switch to dark theme",
+    "switchToLight": "Switch to light theme",
+    "darkTheme": "Dark theme",
+    "lightTheme": "Light theme"
+  },
+  "language": {
+    "select": "Select language",
+    "ukrainian": "Ukrainian",
+    "english": "English",
+    "russian": "Russian"
+  }
+}
+

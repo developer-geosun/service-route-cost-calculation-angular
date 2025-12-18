@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ThemeService, Theme } from '../../core/services/theme.service';
 import { ConfigService } from '../../core/services/config.service';
+import { LanguageService, Language } from '../../core/services/language.service';
 
 /**
  * Компонент панелі інструментів (toolbar)
@@ -13,11 +15,27 @@ import { ConfigService } from '../../core/services/config.service';
 export class ToolbarComponent {
   // Використовуємо async pipe для автоматичної відписки
   theme$ = this.themeService.theme$;
+  language$ = this.languageService.language$;
+  currentLanguage: Language = 'uk';
+  
+  // Доступні мови
+  languages: { code: Language; label: string }[] = [
+    { code: 'uk', label: 'UA' },
+    { code: 'en', label: 'EN' },
+    { code: 'ru', label: 'RU' }
+  ];
 
   constructor(
     private themeService: ThemeService,
-    public configService: ConfigService
-  ) {}
+    public configService: ConfigService,
+    private translateService: TranslateService,
+    private languageService: LanguageService
+  ) {
+    // Підписуємося на зміни мови
+    this.language$.subscribe(lang => {
+      this.currentLanguage = lang;
+    });
+  }
 
   /**
    * Перемикає тему
@@ -30,14 +48,20 @@ export class ToolbarComponent {
    * Отримує поточну тему для aria-label
    */
   getThemeLabel(theme: Theme | null): string {
-    return theme === 'light' ? 'Переключити на темну тему' : 'Переключити на світлу тему';
+    if (theme === 'light') {
+      return this.translateService.instant('theme.switchToDark');
+    }
+    return this.translateService.instant('theme.switchToLight');
   }
 
   /**
    * Отримує заголовок для кнопки теми
    */
   getThemeTitle(theme: Theme | null): string {
-    return theme === 'light' ? 'Темна тема' : 'Світла тема';
+    if (theme === 'light') {
+      return this.translateService.instant('theme.darkTheme');
+    }
+    return this.translateService.instant('theme.lightTheme');
   }
 
   /**
@@ -45,6 +69,13 @@ export class ToolbarComponent {
    */
   getThemeIcon(theme: Theme | null): string {
     return theme === 'light' ? 'dark_mode' : 'light_mode';
+  }
+
+  /**
+   * Змінює мову інтерфейсу
+   */
+  changeLanguage(language: Language): void {
+    this.languageService.setLanguage(language);
   }
 }
 

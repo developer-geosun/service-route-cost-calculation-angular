@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LanguageService } from './core/services/language.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'services-route-calculation-angular';
+
+  constructor(private languageService: LanguageService) {}
+
+  ngOnInit(): void {
+    // Ініціалізація мови при старті додатку
+    // LanguageService автоматично визначить та встановить мову
+  }
 }

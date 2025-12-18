@@ -10,6 +10,18 @@
   
   <span></span>
   <span class="spacer"></span>
+  
+  <!-- Переключатель языка -->
+  <mat-button-toggle-group 
+    [value]="currentLanguage" 
+    (change)="changeLanguage($event.value)"
+    aria-label="Вибір мови">
+    <mat-button-toggle *ngFor="let lang of languages" [value]="lang.code">
+      {{ lang.label }}
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+  
+  <!-- Переключатель темы -->
   <ng-container *ngIf="theme$ | async as currentTheme">
     <button 
       mat-icon-button 
