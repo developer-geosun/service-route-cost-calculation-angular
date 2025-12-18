@@ -1,6 +1,17 @@
 mat-toolbar {
   height: 80px;
   min-height: 80px;
+
+  app-icon-telegram,
+  app-icon-whatsapp,
+  app-icon-viber,
+  app-icon-facebook {
+    margin-left: 10px;
+  }
+
+  app-icon-facebook {
+    margin-right: 10px;
+  }
 }
 
 .spacer {

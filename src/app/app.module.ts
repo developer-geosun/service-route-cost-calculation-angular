@@ -9,11 +9,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { LogoComponent } from './logo/logo.component';
+import { IconTelegramComponent } from './icon-telegram/icon-telegram.component';
+import { IconWhatsappComponent } from './icon-whatsapp/icon-whatsapp.component';
+import { IconViberComponent } from './icon-viber/icon-viber.component';
+import { IconFacebookComponent } from './icon-facebook/icon-facebook.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LogoComponent
+    LogoComponent,
+    IconTelegramComponent,
+    IconWhatsappComponent,
+    IconViberComponent,
+    IconFacebookComponent
   ],
   imports: [
     BrowserModule,
