@@ -21,6 +21,7 @@
     .footer-section {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 5px;
 
       p {
@@ -39,7 +40,7 @@
   .app-footer {
     .footer-content {
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: center;
     }
   }
 }
