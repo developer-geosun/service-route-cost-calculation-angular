@@ -1,16 +1,30 @@
 mat-toolbar {
   height: 80px;
   min-height: 80px;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+
+  app-logo {
+    flex-shrink: 0;
+  }
 
   app-icon-telegram,
   app-icon-whatsapp,
   app-icon-viber,
   app-icon-facebook {
     margin-left: 10px;
+    flex-shrink: 0;
   }
 
   app-icon-facebook {
     margin-right: 10px;
+  }
+
+  button[mat-icon-button] {
+    flex-shrink: 0;
   }
 }
 
