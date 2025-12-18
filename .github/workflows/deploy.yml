@@ -1,0 +1,80 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Angular application
+        run: npm run build -- --configuration production
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Deploy to target repository
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: |
+          # Клонируем целевой репозиторий
+          git clone https://${DEPLOY_TOKEN}@github.com/developer-geosun/services-route-calculation-angular-deploy.git deploy-repo
+          
+          # Переходим в клонированный репозиторий
+          cd deploy-repo
+          
+          # Определяем основную ветку (main или master)
+          if git show-ref --verify --quiet refs/heads/main; then
+            BRANCH="main"
+          elif git show-ref --verify --quiet refs/heads/master; then
+            BRANCH="master"
+          else
+            # Если ветки нет, создаем main
+            BRANCH="main"
+            git checkout -b main
+          fi
+          
+          git checkout $BRANCH
+          
+          # Удаляем все файлы кроме .git
+          find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          
+          # Копируем собранные файлы
+          cp -r ../dist/services-route-calculation-angular-temp/* .
+          
+          # Создаем .nojekyll для правильной работы GitHub Pages с Angular
+          touch .nojekyll
+          
+          # Добавляем все файлы
+          git add .
+          
+          # Проверяем, есть ли изменения для коммита
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            # Коммитим изменения
+            git commit -m "Deploy: $(date +'%Y-%m-%d %H:%M:%S') [skip ci]"
+            
+            # Пушим в целевой репозиторий
+            git push origin $BRANCH
+          fi
+

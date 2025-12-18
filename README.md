@@ -22,6 +22,42 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
+## Deployment
+
+This project is automatically deployed to GitHub Pages via GitHub Actions.
+
+### Настройка автоматического деплоя
+
+1. **Создайте Personal Access Token (PAT) для деплоя:**
+   - Перейдите в GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+   - Создайте новый token с правами `repo` (полный доступ к репозиториям)
+   - Скопируйте созданный token
+
+2. **Добавьте токен в Secrets текущего репозитория:**
+   - Перейдите в Settings → Secrets and variables → Actions
+   - Нажмите "New repository secret"
+   - Имя: `DEPLOY_TOKEN`
+   - Значение: вставьте скопированный Personal Access Token
+   - Нажмите "Add secret"
+
+3. **Настройте GitHub Pages в целевом репозитории:**
+   - Перейдите в репозиторий `services-route-calculation-angular-deploy`
+   - Settings → Pages
+   - Source: выберите "Deploy from a branch"
+   - Branch: выберите `main` (или `master`) и папку `/ (root)`
+   - Нажмите "Save"
+
+4. **Активация деплоя:**
+   - Workflow автоматически запустится при push в ветку `main` или `master`
+   - Также можно запустить вручную через Actions → "Deploy to GitHub Pages" → "Run workflow"
+
+### Ручной деплой
+
+Для ручного деплоя используйте команду:
+```bash
+npm run deploy
+```
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
