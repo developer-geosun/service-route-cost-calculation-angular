@@ -36,27 +36,50 @@ jobs:
         env:
           DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
         run: |
-          # Клонируем целевой репозиторий
-          git clone https://${DEPLOY_TOKEN}@github.com/developer-geosun/services-route-calculation-angular-deploy.git deploy-repo
+          # Пытаемся клонировать целевой репозиторий
+          set +e
+          git clone https://${DEPLOY_TOKEN}@github.com/developer-geosun/services-route-calculation-angular-deploy.git deploy-repo 2>&1
+          CLONE_EXIT_CODE=$?
+          set -e
           
-          # Переходим в клонированный репозиторий
-          cd deploy-repo
-          
-          # Определяем основную ветку (main или master)
-          if git show-ref --verify --quiet refs/heads/main; then
-            BRANCH="main"
-          elif git show-ref --verify --quiet refs/heads/master; then
-            BRANCH="master"
-          else
-            # Если ветки нет, создаем main
+          # Если клонирование не удалось (пустой репозиторий), создаем папку и инициализируем
+          if [ $CLONE_EXIT_CODE -ne 0 ]; then
+            mkdir -p deploy-repo
+            cd deploy-repo
+            git init
+            git remote add origin https://${DEPLOY_TOKEN}@github.com/developer-geosun/services-route-calculation-angular-deploy.git
             BRANCH="main"
             git checkout -b main
+          else
+            cd deploy-repo
+            
+            # Определяем основную ветку
+            # Репозиторий существует, проверяем доступные ветки
+            git fetch origin 2>/dev/null || true
+            
+            if git show-ref --verify --quiet refs/remotes/origin/main 2>/dev/null; then
+              BRANCH="main"
+              git checkout main 2>/dev/null || git checkout -b main origin/main
+            elif git show-ref --verify --quiet refs/remotes/origin/master 2>/dev/null; then
+              BRANCH="master"
+              git checkout master 2>/dev/null || git checkout -b master origin/master
+            else
+              # Нет удаленных веток, проверяем локальные
+              if git show-ref --verify --quiet refs/heads/main 2>/dev/null; then
+                BRANCH="main"
+                git checkout main
+              elif git show-ref --verify --quiet refs/heads/master 2>/dev/null; then
+                BRANCH="master"
+                git checkout master
+              else
+                BRANCH="main"
+                git checkout -b main
+              fi
+            fi
           fi
           
-          git checkout $BRANCH
-          
           # Удаляем все файлы кроме .git
-          find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} + 2>/dev/null || true
           
           # Копируем собранные файлы
           cp -r ../dist/services-route-calculation-angular-temp/* .
@@ -65,16 +88,13 @@ jobs:
           touch .nojekyll
           
           # Добавляем все файлы
-          git add .
+          git add -A
           
-          # Проверяем, есть ли изменения для коммита
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            # Коммитим изменения
+          # Коммитим изменения
+          if ! git diff --staged --quiet; then
             git commit -m "Deploy: $(date +'%Y-%m-%d %H:%M:%S') [skip ci]"
-            
-            # Пушим в целевой репозиторий
-            git push origin $BRANCH
           fi
+          
+          # Пушим в целевой репозиторий (создаем ветку при первом push)
+          git push -u origin $BRANCH || git push origin $BRANCH
 
