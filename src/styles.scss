@@ -21,134 +21,36 @@ body {
   color: #ffffff;
 }
 
-// Стили для выбранной кнопки UA
+// Стили для выбранных кнопок языков
 mat-button-toggle.ua-button.mat-button-toggle-checked {
-  background-color: #FFD700 !important; // Жёлтый фон
-  color: #0000FF !important; // Синий шрифт
+  background-color: #FFD700 !important;
+  color: #0000FF !important;
   
-  &,
-  * {
-    color: #0000FF !important;
-  }
-  
-  .mat-button-toggle-button {
-    background-color: #FFD700 !important;
-    color: #0000FF !important;
-    
-    &,
-    * {
-      color: #0000FF !important;
-    }
-  }
-  
+  .mat-button-toggle-button,
   .mat-button-toggle-label-content {
-    color: #0000FF !important; // Синий шрифт
-  }
-  
-  .mat-button-toggle-focus-overlay {
-    background-color: transparent !important;
-  }
-  
-  &.mat-button-toggle-appearance-standard {
     background-color: #FFD700 !important;
     color: #0000FF !important;
-    
-    .mat-button-toggle-button {
-      background-color: #FFD700 !important;
-      color: #0000FF !important;
-    }
-  }
-  
-  // Дополнительные селекторы для всех внутренних элементов
-  .mat-ripple-element {
-    background-color: rgba(0, 0, 255, 0.1) !important;
   }
 }
 
-// Стили для выбранной кнопки EN
 mat-button-toggle.en-button.mat-button-toggle-checked {
-  background-color: #0000FF !important; // Синий фон
-  color: #FFFFFF !important; // Белый шрифт
+  background-color: #0000FF !important;
+  color: #FFFFFF !important;
   
-  &,
-  * {
-    color: #FFFFFF !important;
-  }
-  
-  .mat-button-toggle-button {
-    background-color: #0000FF !important;
-    color: #FFFFFF !important;
-    
-    &,
-    * {
-      color: #FFFFFF !important;
-    }
-  }
-  
+  .mat-button-toggle-button,
   .mat-button-toggle-label-content {
-    color: #FFFFFF !important; // Белый шрифт
-  }
-  
-  .mat-button-toggle-focus-overlay {
-    background-color: transparent !important;
-  }
-  
-  &.mat-button-toggle-appearance-standard {
     background-color: #0000FF !important;
     color: #FFFFFF !important;
-    
-    .mat-button-toggle-button {
-      background-color: #0000FF !important;
-      color: #FFFFFF !important;
-    }
-  }
-  
-  // Дополнительные селекторы для всех внутренних элементов
-  .mat-ripple-element {
-    background-color: rgba(255, 255, 255, 0.1) !important;
   }
 }
 
-// Стили для выбранной кнопки RU
 mat-button-toggle.ru-button.mat-button-toggle-checked {
-  background-color: #FF0000 !important; // Красный фон
-  color: #FFFFFF !important; // Белый шрифт
+  background-color: #FF0000 !important;
+  color: #FFFFFF !important;
   
-  &,
-  * {
-    color: #FFFFFF !important;
-  }
-  
-  .mat-button-toggle-button {
-    background-color: #FF0000 !important;
-    color: #FFFFFF !important;
-    
-    &,
-    * {
-      color: #FFFFFF !important;
-    }
-  }
-  
+  .mat-button-toggle-button,
   .mat-button-toggle-label-content {
-    color: #FFFFFF !important; // Белый шрифт
-  }
-  
-  .mat-button-toggle-focus-overlay {
-    background-color: transparent !important;
-  }
-  
-  &.mat-button-toggle-appearance-standard {
     background-color: #FF0000 !important;
     color: #FFFFFF !important;
-    
-    .mat-button-toggle-button {
-      background-color: #FF0000 !important;
-      color: #FFFFFF !important;
-    }
-  }
-  
-  // Дополнительные селекторы для всех внутренних элементов
-  .mat-ripple-element {
-    background-color: rgba(255, 255, 255, 0.1) !important;
   }
 }
