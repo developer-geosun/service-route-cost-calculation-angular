@@ -1,6 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'styles/theme';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// Стили для светлой темы
+.light-theme {
+  background-color: #fafafa;
+  color: #000000;
+}
+
+// Стили для темной темы
+.dark-theme {
+  background-color: #303030;
+  color: #ffffff;
+}

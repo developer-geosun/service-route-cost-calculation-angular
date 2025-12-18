@@ -7,8 +7,8 @@
   
   <span></span>
   <span class="spacer"></span>
-  <button mat-icon-button>
-    <mat-icon>menu</mat-icon>
+  <button mat-icon-button (click)="toggleTheme()" [attr.aria-label]="currentTheme === 'light' ? 'Переключить на темную тему' : 'Переключить на светлую тему'" title="{{ currentTheme === 'light' ? 'Темная тема' : 'Светлая тема' }}">
+    <mat-icon>{{ currentTheme === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
   </button>
 </mat-toolbar>
 
