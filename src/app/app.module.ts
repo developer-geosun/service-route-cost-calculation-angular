@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,23 +9,37 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { LogoComponent } from './logo/logo.component';
-import { IconTelegramComponent } from './icon-telegram/icon-telegram.component';
-import { IconWhatsappComponent } from './icon-whatsapp/icon-whatsapp.component';
-import { IconViberComponent } from './icon-viber/icon-viber.component';
-import { IconFacebookComponent } from './icon-facebook/icon-facebook.component';
+
+// Layout компоненти
+import { ToolbarComponent } from './layout/toolbar/toolbar.component';
+import { FooterComponent } from './layout/footer/footer.component';
+
+// Shared компоненти
+import { LogoComponent } from './shared/components/logo/logo.component';
+import { SocialIconComponent } from './shared/components/social-icon/social-icon.component';
+
+// Pages компоненти
+import { MainComponent } from './pages/main/main.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { StopServiceComponent } from './pages/stop-service/stop-service.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    // Layout
+    ToolbarComponent,
+    FooterComponent,
+    // Shared
     LogoComponent,
-    IconTelegramComponent,
-    IconWhatsappComponent,
-    IconViberComponent,
-    IconFacebookComponent
+    SocialIconComponent,
+    // Pages
+    MainComponent,
+    NotFoundComponent,
+    StopServiceComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,

@@ -1,36 +1,9 @@
-<mat-toolbar color="primary">
-  <app-logo></app-logo>
-  <app-icon-telegram [url]="telegramUrl"></app-icon-telegram>
-  <app-icon-whatsapp [url]="whatsAppUrl"></app-icon-whatsapp>
-  <app-icon-viber [url]="viberUrl"></app-icon-viber>
-  <app-icon-facebook [url]="facebookUrl"></app-icon-facebook>
-  
-  <span></span>
-  <span class="spacer"></span>
-  <button mat-icon-button (click)="toggleTheme()" [attr.aria-label]="currentTheme === 'light' ? 'Переключить на темную тему' : 'Переключить на светлую тему'" title="{{ currentTheme === 'light' ? 'Темная тема' : 'Светлая тема' }}">
-    <mat-icon>{{ currentTheme === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
-  </button>
-</mat-toolbar>
+<app-toolbar></app-toolbar>
 
 <div class="content">  
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title>Welcome to Angular Material</mat-card-title>
-      <mat-card-subtitle>Service Route Calculation</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        This is a basic Angular application with Angular Material integrated.
-        You can now use Material components throughout your application.
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card>
+  <router-outlet></router-outlet>
+</div>
 
-  </div>
+<app-footer></app-footer>
 
 
-<router-outlet></router-outlet>

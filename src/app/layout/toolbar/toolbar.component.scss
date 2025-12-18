@@ -1,0 +1,31 @@
+mat-toolbar {
+  height: 80px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+
+  app-logo {
+    flex-shrink: 0;
+  }
+
+  app-social-icon {
+    margin-left: 10px;
+    flex-shrink: 0;
+
+    &:last-of-type {
+      margin-right: 10px;
+    }
+  }
+
+  button[mat-icon-button] {
+    flex-shrink: 0;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+

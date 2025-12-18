@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <app-logo></app-logo>
+  <app-social-icon type="telegram" [url]="configService.telegramUrl"></app-social-icon>
+  <app-social-icon type="whatsapp" [url]="configService.whatsAppUrl"></app-social-icon>
+  <app-social-icon type="viber" [url]="configService.viberUrl"></app-social-icon>
+  <app-social-icon type="facebook" [url]="configService.facebookUrl"></app-social-icon>
+  
+  <span></span>
+  <span class="spacer"></span>
+  <ng-container *ngIf="theme$ | async as currentTheme">
+    <button 
+      mat-icon-button 
+      (click)="toggleTheme()" 
+      [attr.aria-label]="getThemeLabel(currentTheme)"
+      [title]="getThemeTitle(currentTheme)">
+      <mat-icon>{{ getThemeIcon(currentTheme) }}</mat-icon>
+    </button>
+  </ng-container>
+</mat-toolbar>
+
