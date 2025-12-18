@@ -28,28 +28,22 @@ This project is automatically deployed to GitHub Pages via GitHub Actions.
 
 ### Настройка автоматического деплоя
 
-1. **Создайте Personal Access Token (PAT) для деплоя:**
-   - Перейдите в GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
-   - Создайте новый token с правами `repo` (полный доступ к репозиториям)
-   - Скопируйте созданный token
-
-2. **Добавьте токен в Secrets текущего репозитория:**
-   - Перейдите в Settings → Secrets and variables → Actions
-   - Нажмите "New repository secret"
-   - Имя: `DEPLOY_TOKEN`
-   - Значение: вставьте скопированный Personal Access Token
-   - Нажмите "Add secret"
-
-3. **Настройте GitHub Pages в целевом репозитории:**
-   - Перейдите в репозиторий `services-route-calculation-angular-deploy`
-   - Settings → Pages
+1. **Настройте GitHub Pages в текущем репозитории:**
+   - Перейдите в Settings → Pages
    - Source: выберите "Deploy from a branch"
-   - Branch: выберите `main` (или `master`) и папку `/ (root)`
+   - Branch: выберите `gh-pages` и папку `/ (root)`
    - Нажмите "Save"
 
-4. **Активация деплоя:**
+2. **Настройте права доступа для GitHub Actions:**
+   - Перейдите в Settings → Actions → General
+   - В разделе "Workflow permissions" выберите "Read and write permissions"
+   - Убедитесь, что включен "Allow GitHub Actions to create and approve pull requests"
+   - Нажмите "Save"
+
+3. **Активация деплоя:**
    - Workflow автоматически запустится при push в ветку `main` или `master`
    - Также можно запустить вручную через Actions → "Deploy to GitHub Pages" → "Run workflow"
+   - Приложение будет доступно на GitHub Pages после первого успешного деплоя
 
 ### Ручной деплой
 
