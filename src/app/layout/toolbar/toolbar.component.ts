@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ThemeService, Theme } from '../../core/services/theme.service';
 import { ConfigService } from '../../core/services/config.service';
@@ -10,7 +10,8 @@ import { LanguageService, Language } from '../../core/services/language.service'
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  styleUrls: ['./toolbar.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ToolbarComponent {
   // Використовуємо async pipe для автоматичної відписки
