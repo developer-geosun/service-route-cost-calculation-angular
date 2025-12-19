@@ -15,8 +15,10 @@
       "message": "Page not found"
     },
     "stopService": {
-      "title": "Service stopped",
-      "message": "Service stop page"
+      "title": "Service temporarily unavailable",
+      "message": "Technical work in progress",
+      "subMessage": "We are working on improving the service",
+      "tryLater": "Please try again later"
     }
   },
   "theme": {
