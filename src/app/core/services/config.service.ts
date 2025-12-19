@@ -87,5 +87,13 @@ export class ConfigService {
   get logoUrl(): string {
     return this.config.logoUrl;
   }
+
+  /**
+   * Перевіряє, чи зупинено сервіс
+   * При true всі сторінки редиректять на /stop-service
+   */
+  get isServiceStopped(): boolean {
+    return this.config.isServiceStopped;
+  }
 }
 
