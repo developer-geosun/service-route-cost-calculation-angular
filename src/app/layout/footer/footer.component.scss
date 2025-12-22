@@ -39,6 +39,14 @@
   }
 }
 
+// Красный фон для иконок в светлой теме
+:host-context(.light-theme) {
+  app-social-icon {
+    --background-color: gray;
+    color: #ffffff;
+  }
+}
+
 // Планшеты и больше (от 600px)
 @media (min-width: 600px) {
   .app-footer {

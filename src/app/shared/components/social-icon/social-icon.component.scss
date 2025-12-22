@@ -8,7 +8,7 @@
   min-height: 28px;
   flex-shrink: 0;
   border-radius: 50%;
-  background-color: #f8f9fa;
+  background-color: var(--background-color, #f8f9fa);
   color: #495057;
   text-decoration: none;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);

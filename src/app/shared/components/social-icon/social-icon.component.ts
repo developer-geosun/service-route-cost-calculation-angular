@@ -9,13 +9,15 @@ import { SocialNetworkType } from '../../models/social-network.model';
   templateUrl: './social-icon.component.html',
   styleUrls: ['./social-icon.component.scss'],
   host: {
-    '[style.--hover-color]': 'hoverColor'
+    '[style.--hover-color]': 'hoverColor',
+    '[style.--background-color]': 'backgroundColor'
   }
 })
 export class SocialIconComponent {
   @Input() type: SocialNetworkType = 'telegram';
   @Input() url: string = '';
   @Input() title: string = '';
+  @Input() backgroundColor: string = '';
 
   /**
    * Отримує  SVG path для іконки залежно від типу
