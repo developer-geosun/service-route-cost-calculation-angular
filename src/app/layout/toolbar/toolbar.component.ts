@@ -11,7 +11,8 @@ import { LanguageService, Language } from '../../core/services/language.service'
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class ToolbarComponent {
   // Використовуємо async pipe для автоматичної відписки

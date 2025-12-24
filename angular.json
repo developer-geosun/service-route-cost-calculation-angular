@@ -74,12 +74,15 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "services-route-calculation-angular-temp:build"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "services-route-calculation-angular-temp:build:production"
+              "buildTarget": "services-route-calculation-angular-temp:build:production"
             },
             "development": {
-              "browserTarget": "services-route-calculation-angular-temp:build:development"
+              "buildTarget": "services-route-calculation-angular-temp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "services-route-calculation-angular-temp:build"
+            "buildTarget": "services-route-calculation-angular-temp:build"
           }
         },
         "test": {
