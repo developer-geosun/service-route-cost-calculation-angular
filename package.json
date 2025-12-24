@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build --configuration production --base-href=/service-route-cost-calculation-angular/ && npx angular-cli-ghpages --dir=dist/services-route-calculation-angular-temp"
+    "deploy": "ng build --configuration production --base-href=/service-route-cost-calculation-angular/ && npx gh-pages@latest -d dist/services-route-calculation-angular-temp"
   },
   "private": true,
   "dependencies": {
@@ -32,13 +32,13 @@
     "@angular/cli": "~18.2.14",
     "@angular/compiler-cli": "^18.2.14",
     "@types/jasmine": "~4.3.0",
+    "gh-pages": "^6.3.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.4.0",
-    "angular-cli-ghpages": "^1.0.0"
+    "typescript": "~5.4.0"
   }
 }
