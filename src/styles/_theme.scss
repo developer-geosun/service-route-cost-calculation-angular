@@ -1,11 +1,12 @@
 @use '@angular/material' as mat;
 
-// Светлая тема
-$light-primary: mat.define-palette(mat.$indigo-palette);
-$light-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$light-warn: mat.define-palette(mat.$red-palette);
+// Використовуємо M2 API з префіксом m2- для Angular Material 18
+// Світла тема
+$light-primary: mat.m2-define-palette(mat.$m2-indigo-palette);
+$light-accent: mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
+$light-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
-$light-theme: mat.define-light-theme((
+$light-theme: mat.m2-define-light-theme((
   color: (
     primary: $light-primary,
     accent: $light-accent,
@@ -13,12 +14,12 @@ $light-theme: mat.define-light-theme((
   )
 ));
 
-// Темная тема
-$dark-primary: mat.define-palette(mat.$indigo-palette);
-$dark-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$dark-warn: mat.define-palette(mat.$red-palette);
+// Темна тема
+$dark-primary: mat.m2-define-palette(mat.$m2-indigo-palette);
+$dark-accent: mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
+$dark-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
-$dark-theme: mat.define-dark-theme((
+$dark-theme: mat.m2-define-dark-theme((
   color: (
     primary: $dark-primary,
     accent: $dark-accent,
@@ -26,10 +27,10 @@ $dark-theme: mat.define-dark-theme((
   )
 ));
 
-// Применение светлой темы по умолчанию
+// Застосування світлої теми за замовчуванням
 @include mat.all-component-themes($light-theme);
 
-// Применение темной темы при наличии класса dark-theme
+// Застосування темної теми при наявності класу dark-theme
 .dark-theme {
   @include mat.all-component-colors($dark-theme);
 }
