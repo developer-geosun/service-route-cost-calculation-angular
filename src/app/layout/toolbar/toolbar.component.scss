@@ -47,6 +47,25 @@ mat-toolbar {
       min-width: 24px;
       height: 22px;
       line-height: 1;
+
+      // Приховуємо галочку при виборі
+      ::ng-deep {
+        .mat-button-toggle-label-content,
+        .mat-button-toggle-button {
+          mat-icon {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            width: 0 !important;
+            height: 0 !important;
+          }
+        }
+        
+        mat-icon {
+          display: none !important;
+          visibility: hidden !important;
+        }
+      }
     }
   }
 
@@ -102,6 +121,25 @@ mat-toolbar {
         padding: 4px 6px;
         min-width: 36px;
         height: 28px;
+
+        // Приховуємо галочку при виборі
+        ::ng-deep {
+          .mat-button-toggle-label-content,
+          .mat-button-toggle-button {
+            mat-icon {
+              display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+              width: 0 !important;
+              height: 0 !important;
+            }
+          }
+          
+          mat-icon {
+            display: none !important;
+            visibility: hidden !important;
+          }
+        }
       }
     }
 

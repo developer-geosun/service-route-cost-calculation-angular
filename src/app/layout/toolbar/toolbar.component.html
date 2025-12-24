@@ -12,6 +12,7 @@
   <mat-button-toggle-group 
     [value]="currentLanguage" 
     (change)="changeLanguage($event.value)"
+    [hideSingleSelectionIndicator]="true"
     aria-label="Вибір мови">
     <mat-button-toggle *ngFor="let lang of languages" [value]="lang.code" [class.ua-button]="lang.code === 'uk'" [class.en-button]="lang.code === 'en'" [class.ru-button]="lang.code === 'ru'">
       {{ lang.label }}
