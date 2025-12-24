@@ -39,11 +39,26 @@
   }
 }
 
-// Красный фон для иконок в светлой теме
+// Стилі для світлої теми
 :host-context(.light-theme) {
+  .app-footer {
+    background-color: #e0e0e0; // Світло-сірий відтінок
+    color: #424242;
+  }
+
   app-social-icon {
-    --background-color: gray;
-    color: #ffffff;
+    --background-color: #ffffff;
+    color: #424242;
+  }
+
+  app-social-icon:hover {
+    ::ng-deep {
+      color: #ffffff !important;
+
+      svg {
+        fill: #ffffff !important;
+      }
+    }
   }
 }
 
