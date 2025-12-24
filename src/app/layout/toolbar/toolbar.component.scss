@@ -74,12 +74,18 @@ mat-toolbar {
     order: 5;
     width: 36px;
     height: 36px;
-    line-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 
     mat-icon {
       font-size: 20px;
       width: 20px;
       height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
@@ -148,12 +154,18 @@ mat-toolbar {
       order: 5;
       width: 40px;
       height: 40px;
-      line-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
 
       mat-icon {
         font-size: 24px;
         width: 24px;
         height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }
